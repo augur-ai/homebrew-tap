@@ -5,20 +5,20 @@
 class Gitx < Formula
   desc "AI-powered codebase indexing and analysis CLI tool"
   homepage "https://github.com/augur-ai/augur-jobs"
-  version "0.50.0"
+  version "0.51.0"
   license "MIT"
   depends_on :linux
 
   if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-    url "https://github.com/augur-ai/augur-jobs/releases/download/v0.50.0/gitx_0.50.0_linux_amd64.tar.gz"
-    sha256 "9aa00ec32fe52d4e886729c9ff50ff412b26ad978851b1eac75da4a831c1ef2d"
+    url "https://github.com/augur-ai/augur-jobs/releases/download/v0.51.0/gitx_0.51.0_linux_amd64.tar.gz"
+    sha256 "a75081c940d0aa0b44c6ea6df38830b55f72b53d4b902e60377b93cbddb4b72b"
     define_method(:install) do
       bin.install "gitx"
     end
   end
   if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://github.com/augur-ai/augur-jobs/releases/download/v0.50.0/gitx_0.50.0_linux_arm64.tar.gz"
-    sha256 "948920faa5487be76e3de0d3df253c4f756520d502858dab09b74302ec7c3c7a"
+    url "https://github.com/augur-ai/augur-jobs/releases/download/v0.51.0/gitx_0.51.0_linux_arm64.tar.gz"
+    sha256 "e7fb2c280f89ee26b1236510395cc29f846f390de03e2e92d96df225b4ded48c"
     define_method(:install) do
       bin.install "gitx"
     end
