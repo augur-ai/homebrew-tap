@@ -7,39 +7,20 @@ class Orb < Formula
   homepage "https://github.com/augur-ai/augur-jobs"
   version "0.54.0"
   license "MIT"
+  depends_on :linux
 
-  on_linux do
-    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/augur-ai/augur-jobs/releases/download/v0.54.0/orb_0.54.0_linux_amd64.tar.gz"
-      sha256 "5dde672c63846c195c3a9fa13ac95ddd137b8571451ab56c4f83035aed591273"
-    end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/augur-ai/augur-jobs/releases/download/v0.54.0/orb_0.54.0_linux_arm64.tar.gz"
-      sha256 "14e681158047368402b81b0ecf983ca847b7754354e09ca4b7948c200893107a"
+  if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
+    url "https://github.com/augur-ai/augur-jobs/releases/download/v0.54.0/orb_0.54.0_linux_amd64.tar.gz"
+    sha256 "39af8c4e19d938c12c648154d1bf6ccee0e03af045788dbfaa9750594cfa6ad7"
+    define_method(:install) do
+      bin.install "orb"
     end
   end
-
-  on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/augur-ai/augur-jobs/releases/download/v0.54.0/orb_0.54.0_darwin_amd64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
-    end
-    if Hardware::CPU.arm?
-      url "https://github.com/augur-ai/augur-jobs/releases/download/v0.54.0/orb_0.54.0_darwin_arm64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
-    end
-  end
-
-  def install
-    bin.install "orb"
-  end
-
-  caveats do
-    on_macos do
-      <<~EOS
-        On first use you will be prompted to log in; a browser will open to complete authentication.
-        Run `orb auth login` if you need to re-authenticate.
-      EOS
+  if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+    url "https://github.com/augur-ai/augur-jobs/releases/download/v0.54.0/orb_0.54.0_linux_arm64.tar.gz"
+    sha256 "70142f288bd2ff4338311e5681d7808fe007844304a0c3caac525177153ad3f8"
+    define_method(:install) do
+      bin.install "orb"
     end
   end
 
