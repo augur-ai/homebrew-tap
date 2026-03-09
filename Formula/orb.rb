@@ -11,14 +11,14 @@ class Orb < Formula
 
   if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
     url "https://github.com/augur-ai/augur-jobs/releases/download/v0.54.0/orb_0.54.0_linux_amd64.tar.gz"
-    sha256 "8e9b3f4044b63b23554fe6742f2db4b610f9217541f4a006ac6597a9e8471b3e"
+    sha256 "1989d0f4a3c58668a00b2f85a4668dd34209463f76583f1d144237628f8e9cb4"
     def install
       bin.install "orb"
     end
   end
   if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
     url "https://github.com/augur-ai/augur-jobs/releases/download/v0.54.0/orb_0.54.0_linux_arm64.tar.gz"
-    sha256 "0f40eab5907be2a1d8faa43182c8cd5aba55a6aa25912b558f52fe460af54734"
+    sha256 "dd0ccfc6c22b1b893d16b5578b1762a4643610fc4ef840688b6117af8dfaf7c7"
     def install
       bin.install "orb"
     end
