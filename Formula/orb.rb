@@ -20,15 +20,15 @@ class Orb < Formula
   end
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/augur-ai/augur-jobs/releases/download/v0.0.5/orb_0.0.5_darwin_amd64.tar.gz"
-      sha256 "8e22877b80791795f2de8a6f1a9701f4f5fb97a2401534514f70c9bf1de65dd8"
-    end
-    if Hardware::CPU.arm?
-      url "https://github.com/augur-ai/augur-jobs/releases/download/v0.0.5/orb_0.0.5_darwin_arm64.tar.gz"
-      sha256 "523dec862e6afc6793bd1f635a79c07a7cb5fb52a91ecb15e22e2efb19bd1642"
-    end
+  if Hardware::CPU.intel?
+    url "https://github.com/augur-ai/augur-jobs/releases/download/v0.0.6/orb_0.0.6_darwin_amd64.tar.gz"
+    sha256 "fb76ce1db0c467359b7f377e8734d0ac595795e67c16c7056070f6215c4782ce"
   end
+  if Hardware::CPU.arm?
+    url "https://github.com/augur-ai/augur-jobs/releases/download/v0.0.6/orb_0.0.6_darwin_arm64.tar.gz"
+    sha256 "283cc28caf14b9ad9c9b44bb081baf2b306f1f45f24ad40134b5eccc8e884fef"
+  end
+end
 
   def install
     bin.install "orb"
