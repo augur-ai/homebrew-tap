@@ -5,42 +5,23 @@
 class Orb < Formula
   desc "AI-powered codebase indexing and analysis CLI tool"
   homepage "https://github.com/augur-ai/augur-jobs"
-  version "0.0.5"
+  version "0.0.6"
   license "MIT"
+  depends_on :linux
 
-  on_linux do
-    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/augur-ai/augur-jobs/releases/download/v0.0.5/orb_0.0.5_linux_amd64.tar.gz"
-      sha256 "372abb4374f439d1973ab65bdf1a306a661f39313c344d1bc7d285841229d05b"
-    end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/augur-ai/augur-jobs/releases/download/v0.0.5/orb_0.0.5_linux_arm64.tar.gz"
-      sha256 "fd135fd129082bb6fec79acc870265fa1aabe9f5211b5564cbd05af6073c77e1"
+  if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
+    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.6/orb_0.0.6_linux_amd64.tar.gz"
+    sha256 "803bf38155e1473a4adfee00d6abc633eb203d839c7011b3f7906e68513c4892"
+    def install
+      bin.install "orb"
     end
   end
-
-  on_macos do
-  if Hardware::CPU.intel?
-    url "https://github.com/augur-ai/augur-jobs/releases/download/v0.0.6/orb_0.0.6_darwin_amd64.tar.gz"
-    sha256 "fb76ce1db0c467359b7f377e8734d0ac595795e67c16c7056070f6215c4782ce"
-  end
-  if Hardware::CPU.arm?
-    url "https://github.com/augur-ai/augur-jobs/releases/download/v0.0.6/orb_0.0.6_darwin_arm64.tar.gz"
-    sha256 "283cc28caf14b9ad9c9b44bb081baf2b306f1f45f24ad40134b5eccc8e884fef"
-  end
-end
-
-  def install
-    bin.install "orb"
-  end
-
-  def caveats
-    return "" unless OS.mac?
-
-    <<~EOS
-      On first use you will be prompted to log in; a browser will open to complete authentication.
-      Run `orb auth login` if you need to re-authenticate.
-    EOS
+  if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.6/orb_0.0.6_linux_arm64.tar.gz"
+    sha256 "1bfcaed8ec400ba9dd0efe909021918fa5aef30685b98e531699fc939e5693bf"
+    def install
+      bin.install "orb"
+    end
   end
 
   test do
