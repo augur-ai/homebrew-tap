@@ -5,23 +5,42 @@
 class Orb < Formula
   desc "AI-powered codebase indexing and analysis CLI tool"
   homepage "https://github.com/augur-ai/augur-jobs"
-  version "0.0.5"
+  version "0.54.0"
   license "MIT"
-  depends_on :linux
 
-  if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-    url "https://github.com/augur-ai/augur-jobs/releases/download/v0.0.5/orb_0.0.5_linux_amd64.tar.gz"
-    sha256 "372abb4374f439d1973ab65bdf1a306a661f39313c344d1bc7d285841229d05b"
-    def install
-      bin.install "orb"
+  on_linux do
+    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
+      url "https://github.com/augur-ai/augur-jobs/releases/download/v0.54.0/orb_0.54.0_linux_amd64.tar.gz"
+      sha256 "5dde672c63846c195c3a9fa13ac95ddd137b8571451ab56c4f83035aed591273"
+    end
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/augur-ai/augur-jobs/releases/download/v0.54.0/orb_0.54.0_linux_arm64.tar.gz"
+      sha256 "14e681158047368402b81b0ecf983ca847b7754354e09ca4b7948c200893107a"
     end
   end
-  if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://github.com/augur-ai/augur-jobs/releases/download/v0.0.5/orb_0.0.5_linux_arm64.tar.gz"
-    sha256 "fd135fd129082bb6fec79acc870265fa1aabe9f5211b5564cbd05af6073c77e1"
-    def install
-      bin.install "orb"
+
+  on_macos do
+    if Hardware::CPU.intel?
+      url "https://github.com/augur-ai/augur-jobs/releases/download/v0.54.0/orb_0.54.0_darwin_amd64.tar.gz"
+      sha256 :no_check
     end
+    if Hardware::CPU.arm?
+      url "https://github.com/augur-ai/augur-jobs/releases/download/v0.54.0/orb_0.54.0_darwin_arm64.tar.gz"
+      sha256 :no_check
+    end
+  end
+
+  def install
+    bin.install "orb"
+  end
+
+  def caveats
+    return "" unless OS.mac?
+
+    <<~EOS
+      On first use you will be prompted to log in; a browser will open to complete authentication.
+      Run `orb auth login` if you need to re-authenticate.
+    EOS
   end
 
   test do
