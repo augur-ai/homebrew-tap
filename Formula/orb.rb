@@ -5,20 +5,20 @@
 class Orb < Formula
   desc "AI-powered codebase indexing and analysis CLI tool"
   homepage "https://github.com/augur-ai/augur-jobs"
-  version "0.54.0"
+  version "0.0.5"
   license "MIT"
   depends_on :linux
 
   if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-    url "https://github.com/augur-ai/augur-jobs/releases/download/v0.54.0/orb_0.54.0_linux_amd64.tar.gz"
-    sha256 "1989d0f4a3c58668a00b2f85a4668dd34209463f76583f1d144237628f8e9cb4"
+    url "https://github.com/augur-ai/augur-jobs/releases/download/v0.0.5/orb_0.0.5_linux_amd64.tar.gz"
+    sha256 "372abb4374f439d1973ab65bdf1a306a661f39313c344d1bc7d285841229d05b"
     def install
       bin.install "orb"
     end
   end
   if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://github.com/augur-ai/augur-jobs/releases/download/v0.54.0/orb_0.54.0_linux_arm64.tar.gz"
-    sha256 "dd0ccfc6c22b1b893d16b5578b1762a4643610fc4ef840688b6117af8dfaf7c7"
+    url "https://github.com/augur-ai/augur-jobs/releases/download/v0.0.5/orb_0.0.5_linux_arm64.tar.gz"
+    sha256 "fd135fd129082bb6fec79acc870265fa1aabe9f5211b5564cbd05af6073c77e1"
     def install
       bin.install "orb"
     end
