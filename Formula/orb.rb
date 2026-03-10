@@ -5,35 +5,26 @@
 class Orb < Formula
   desc "AI-powered codebase indexing and analysis CLI tool"
   homepage "https://github.com/augur-ai/augur-jobs"
-  version "0.0.18"
+  version "0.0.19"
   license "MIT"
-  on_linux do
-    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.18/orb_0.0.18_linux_amd64.tar.gz"
-      sha256 "c7a3f13b9ea5e04a5961fe1176399703f5d0b50b7229a406eb05c27f4ccd81ae"
-    end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.18/orb_0.0.18_linux_arm64.tar.gz"
-      sha256 "e5d1606b6deef46b31dd7d6371d76d29554ebcc9fe7747b159757c10345089ec"
+  depends_on :linux
+
+  if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
+    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.19/orb_0.0.19_linux_amd64.tar.gz"
+    sha256 "03ed6748e1ba4a4cc05069f07a289889fa7e774081e6e876952c7c6b1a2ede8e"
+    def install
+      bin.install "orb"
     end
   end
-
-  on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.18/orb_0.0.18_darwin_amd64.tar.gz"
-      sha256 "2f66b06a5a5c481d8ef8cce4785cdc4c374590ca111c692962583a5662ca788c"
+  if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.19/orb_0.0.19_linux_arm64.tar.gz"
+    sha256 "2f61261b94028c9c8e3ca50490752287ead3d56c3e988706fb28eee4dbf21f39"
+    def install
+      bin.install "orb"
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.18/orb_0.0.18_darwin_arm64.tar.gz"
-      sha256 "0681bdab75fccb4da015453c2567755b60be877cff2926123e6ade7c969eecf2"
-    end
-  end
-
-  def install
-    bin.install "orb"
   end
 
   test do
-    system bin/"orb", "--version"
+    system "#{bin}/orb", "--version"
   end
 end
