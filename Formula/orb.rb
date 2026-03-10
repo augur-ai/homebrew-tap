@@ -7,8 +7,7 @@ class Orb < Formula
   homepage "https://github.com/augur-ai/augur-jobs"
   version "0.0.18"
   license "MIT"
-  depends_on :linux
-
+  on_linux do
   if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
     url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.18/orb_0.0.18_linux_amd64.tar.gz"
     sha256 "c7a3f13b9ea5e04a5961fe1176399703f5d0b50b7229a406eb05c27f4ccd81ae"
@@ -23,6 +22,18 @@ class Orb < Formula
       bin.install "orb"
     end
   end
+  end
+
+  on_macos do
+  if Hardware::CPU.intel?
+    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.18/orb_0.0.18_darwin_amd64.tar.gz"
+    sha256 "2f66b06a5a5c481d8ef8cce4785cdc4c374590ca111c692962583a5662ca788c"
+  end
+  if Hardware::CPU.arm?
+    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.18/orb_0.0.18_darwin_arm64.tar.gz"
+    sha256 "0681bdab75fccb4da015453c2567755b60be877cff2926123e6ade7c969eecf2"
+  end
+end
 
   test do
     system "#{bin}/orb", "--version"
