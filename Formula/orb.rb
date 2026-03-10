@@ -8,20 +8,6 @@ class Orb < Formula
   version "0.0.16"
   license "MIT"
   on_linux do
-<<<<<<< HEAD
-  if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.16/orb_0.0.16_linux_amd64.tar.gz"
-    sha256 "04a7d1b07a046f3ccd2f4ddd4789daee5bf25b2b2fe58714be857e55fff7fc44"
-    def install
-      bin.install "orb"
-    end
-  end
-  if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.16/orb_0.0.16_linux_arm64.tar.gz"
-    sha256 "24e5d4489bc8904b162770c5f9f70d0bdbb7e874da84c32c32aa97dcc307e87a"
-    def install
-      bin.install "orb"
-=======
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.16/orb_0.0.16_linux_amd64.tar.gz"
       sha256 "04a7d1b07a046f3ccd2f4ddd4789daee5bf25b2b2fe58714be857e55fff7fc44"
@@ -29,17 +15,10 @@ class Orb < Formula
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.16/orb_0.0.16_linux_arm64.tar.gz"
       sha256 "24e5d4489bc8904b162770c5f9f70d0bdbb7e874da84c32c32aa97dcc307e87a"
->>>>>>> 5d85e22 (Bump orb formula to 0.0.16)
     end
-  end
   end
 
   on_macos do
-<<<<<<< HEAD
-  if Hardware::CPU.intel?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.16/orb_0.0.16_darwin_amd64.tar.gz"
-    sha256 "4c8bd688c5bd980f66b7c258ebe98826df14eef9973ecd939f2c9ee290827e62"
-=======
     if Hardware::CPU.intel?
       url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.16/orb_0.0.16_darwin_amd64.tar.gz"
       sha256 "4c8bd688c5bd980f66b7c258ebe98826df14eef9973ecd939f2c9ee290827e62"
@@ -48,15 +27,13 @@ class Orb < Formula
       url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.16/orb_0.0.16_darwin_arm64.tar.gz"
       sha256 "c9eb0fcde815f09c9d2c36f2569787ef5194905c49c587ef7823115d1c2145e8"
     end
->>>>>>> 5d85e22 (Bump orb formula to 0.0.16)
   end
-  if Hardware::CPU.arm?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.16/orb_0.0.16_darwin_arm64.tar.gz"
-    sha256 "c9eb0fcde815f09c9d2c36f2569787ef5194905c49c587ef7823115d1c2145e8"
+
+  def install
+    bin.install "orb"
   end
-end
 
   test do
-    system "#{bin}/orb", "--version"
+    system bin/"orb", "--version"
   end
 end
