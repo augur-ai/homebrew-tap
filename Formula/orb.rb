@@ -8,34 +8,32 @@ class Orb < Formula
   version "0.0.18"
   license "MIT"
   on_linux do
-  if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.18/orb_0.0.18_linux_amd64.tar.gz"
-    sha256 "c7a3f13b9ea5e04a5961fe1176399703f5d0b50b7229a406eb05c27f4ccd81ae"
-    def install
-      bin.install "orb"
+    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
+      url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.18/orb_0.0.18_linux_amd64.tar.gz"
+      sha256 "c7a3f13b9ea5e04a5961fe1176399703f5d0b50b7229a406eb05c27f4ccd81ae"
     end
-  end
-  if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.18/orb_0.0.18_linux_arm64.tar.gz"
-    sha256 "e5d1606b6deef46b31dd7d6371d76d29554ebcc9fe7747b159757c10345089ec"
-    def install
-      bin.install "orb"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.18/orb_0.0.18_linux_arm64.tar.gz"
+      sha256 "e5d1606b6deef46b31dd7d6371d76d29554ebcc9fe7747b159757c10345089ec"
     end
-  end
   end
 
   on_macos do
-  if Hardware::CPU.intel?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.18/orb_0.0.18_darwin_amd64.tar.gz"
-    sha256 "2f66b06a5a5c481d8ef8cce4785cdc4c374590ca111c692962583a5662ca788c"
+    if Hardware::CPU.intel?
+      url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.18/orb_0.0.18_darwin_amd64.tar.gz"
+      sha256 "2f66b06a5a5c481d8ef8cce4785cdc4c374590ca111c692962583a5662ca788c"
+    end
+    if Hardware::CPU.arm?
+      url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.18/orb_0.0.18_darwin_arm64.tar.gz"
+      sha256 "0681bdab75fccb4da015453c2567755b60be877cff2926123e6ade7c969eecf2"
+    end
   end
-  if Hardware::CPU.arm?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.18/orb_0.0.18_darwin_arm64.tar.gz"
-    sha256 "0681bdab75fccb4da015453c2567755b60be877cff2926123e6ade7c969eecf2"
+
+  def install
+    bin.install "orb"
   end
-end
 
   test do
-    system "#{bin}/orb", "--version"
+    system bin/"orb", "--version"
   end
 end
