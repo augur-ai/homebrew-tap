@@ -5,39 +5,24 @@
 class Orb < Formula
   desc "AI-powered codebase indexing and analysis CLI tool"
   homepage "https://github.com/augur-ai/augur-jobs"
-  version "0.0.34"
+  version "0.0.35"
   license "MIT"
-  on_linux do
+  depends_on :linux
+
   if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.34/orb_0.0.34_linux_amd64.tar.gz"
-    sha256 "cd8d13d01d4812391c267d54c9a7b11ec736e8b099ec963c4a29ea7c33828942"
+    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.35/orb_0.0.35_linux_amd64.tar.gz"
+    sha256 "33756075d1aea0ca16049b63e400450a5f33dd29a3f9e033679fce8c583a0d7f"
     def install
       bin.install "orb"
     end
   end
   if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.34/orb_0.0.34_linux_arm64.tar.gz"
-    sha256 "cef8ec5bc8c7536e95f0226f338a7509e13f1f730bb9120a06cf8711d125ec4e"
+    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.35/orb_0.0.35_linux_arm64.tar.gz"
+    sha256 "eb0552488140df1a2a882871be6846d56822b90a5599e1eb13f8256a29912b61"
     def install
       bin.install "orb"
     end
   end
-  end
-
-  on_macos do
-  if Hardware::CPU.intel?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.34/orb_0.0.34_darwin_amd64.tar.gz"
-    sha256 "5653b065d4f855c47c11be7a4fd50a47a95b9c4357bd4a5f437c3b2fb2f441bc"
-  end
-  if Hardware::CPU.arm?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.34/orb_0.0.34_darwin_arm64.tar.gz"
-    sha256 "877576c95696f034d1cbe01956a87f6778c213475f58e4a48d31a52142991913"
-  end
-  # Ensure macOS builds have an install stanza; GoReleaser only generates it for Linux by default.
-  def install
-    bin.install "orb"
-  end
-end
 
   test do
     system "#{bin}/orb", "--version"
