@@ -5,48 +5,24 @@
 class Orb < Formula
   desc "AI-powered codebase indexing and analysis CLI tool"
   homepage "https://github.com/augur-ai/augur-jobs"
-  version "0.0.39"
+  version "0.0.43"
   license "MIT"
-  on_linux do
+  depends_on :linux
+
   if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.39/orb_0.0.39_linux_amd64.tar.gz"
-    sha256 "88ec97997e21a6b85370a8b1fd0b8dd595c6aa22b75f38765fcf9f65d9304bab"
+    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.43/orb_0.0.43_linux_amd64.tar.gz"
+    sha256 "a68d5ffe7ffb69158f29a887e33bc79f0af74d358db4323e7d14cbe2cc671917"
     def install
       bin.install "orb"
     end
   end
   if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.39/orb_0.0.39_linux_arm64.tar.gz"
-    sha256 "2891b23dac97916a5f2267e002f55f3267e0a6a716f0e164f4c1506b9e91f3dc"
+    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.43/orb_0.0.43_linux_arm64.tar.gz"
+    sha256 "2ec83cefc6be42a4bbcc0c508ca176e96671778dab5cd9e9303e495568873eb6"
     def install
       bin.install "orb"
     end
   end
-  end
-
-  on_macos do
-  if Hardware::CPU.intel?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.43/orb_0.0.43_darwin_amd64.tar.gz"
-    sha256 "9d3854be1221a8f69a526e32ebb0b0d59cf0cb490842fae7ac4e1530c325218f"
-  end
-  if Hardware::CPU.arm?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.43/orb_0.0.43_darwin_arm64.tar.gz"
-    sha256 "cfe46269fe5334955b5ab960ba8c89a3901f8bcc342c4157207d01badeba5c1f"
-  end
-  # Ensure macOS builds have an install stanza; GoReleaser only generates it for Linux by default.
-  def install
-    bin.install "orb"
-  end
-end
-  if Hardware::CPU.arm?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.39/orb_0.0.39_darwin_arm64.tar.gz"
-    sha256 "4aacd1d22d21dd8fa6336288dae4955cd12b4bc1a46de8a220c483de913676ec"
-  end
-  # Ensure macOS builds have an install stanza; GoReleaser only generates it for Linux by default.
-  def install
-    bin.install "orb"
-  end
-end
 
   test do
     system "#{bin}/orb", "--version"
