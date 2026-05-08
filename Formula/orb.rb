@@ -5,20 +5,20 @@
 class Orb < Formula
   desc "AI-powered codebase indexing and analysis CLI tool"
   homepage "https://github.com/augur-ai/augur-jobs"
-  version "0.0.44"
+  version "0.0.45"
   license "MIT"
   depends_on :linux
 
   if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.44/orb_0.0.44_linux_amd64.tar.gz"
-    sha256 "4adaf24a95f43c17a2f7a5840d5ec5446153059977b59cdd38ae20e67d00b376"
+    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.45/orb_0.0.45_linux_amd64.tar.gz"
+    sha256 "5299d202eed09102ea9d725997cb89f4e695591f59e64dead8ae68e433ac2f08"
     def install
       bin.install "orb"
     end
   end
   if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.44/orb_0.0.44_linux_arm64.tar.gz"
-    sha256 "06905b7d2bd34d241b851f7b391bad923ea59b6bf411aba65995e6db6f911dc8"
+    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.45/orb_0.0.45_linux_arm64.tar.gz"
+    sha256 "b80ec8fa0c98db400272b92a5226abb8e24a876897919d1f1410d714368ccf92"
     def install
       bin.install "orb"
     end
