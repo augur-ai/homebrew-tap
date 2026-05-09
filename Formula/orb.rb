@@ -26,9 +26,18 @@ class Orb < Formula
 
   on_macos do
   if Hardware::CPU.intel?
-    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.45/orb_0.0.45_darwin_amd64.tar.gz"
-    sha256 "4b47ed816ab47521f4522964b15c0fe500ab67d040313b9254d18d442c9aea98"
+    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.46/orb_0.0.46_darwin_amd64.tar.gz"
+    sha256 "1bbdb4121e6ba55ade9c1b9316d5142436af5c8853b572d24044ef19a81b12b1"
   end
+  if Hardware::CPU.arm?
+    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.46/orb_0.0.46_darwin_arm64.tar.gz"
+    sha256 "bc0cbff9366043712672ad471022969f2d2cb5fb038328a72c4b3ff7e629603e"
+  end
+  # Ensure macOS builds have an install stanza; GoReleaser only generates it for Linux by default.
+  def install
+    bin.install "orb"
+  end
+end
   if Hardware::CPU.arm?
     url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.45/orb_0.0.45_darwin_arm64.tar.gz"
     sha256 "7f06b266e71a2b5cfb1c7c7157905bec7533618b1d249cc45fcdfa3622460e4e"
