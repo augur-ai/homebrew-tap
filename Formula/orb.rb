@@ -7,8 +7,7 @@ class Orb < Formula
   homepage "https://github.com/augur-ai/augur-jobs"
   version "0.0.54"
   license "MIT"
-  depends_on :linux
-
+  on_linux do
   if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
     url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.54/orb_0.0.54_linux_amd64.tar.gz"
     sha256 "acbb4d447d354ea093c537bdee2a0cd952bcc6f4a1cd263e385ac61e849e6205"
@@ -23,6 +22,22 @@ class Orb < Formula
       bin.install "orb"
     end
   end
+  end
+
+  on_macos do
+  if Hardware::CPU.intel?
+    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.55/orb_0.0.55_darwin_amd64.tar.gz"
+    sha256 "86d044e9d238d0a8fe8e3796d2359d454617e99361ef5ebf4da97b30e40b1b88"
+  end
+  if Hardware::CPU.arm?
+    url "https://github.com/augur-ai/homebrew-tap/releases/download/v0.0.55/orb_0.0.55_darwin_arm64.tar.gz"
+    sha256 "9b5a79ec9f2b99afc5c1514da038bc6cd372f9ad4821925b0112cdcac269c3aa"
+  end
+  # Ensure macOS builds have an install stanza; GoReleaser only generates it for Linux by default.
+  def install
+    bin.install "orb"
+  end
+end
 
   test do
     system "#{bin}/orb", "--version"
